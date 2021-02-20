@@ -7,8 +7,13 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "@feathersjs/authentication-client": "^4.5.11",
+    "@feathersjs/feathers": "^4.5.11",
+    "@feathersjs/rest-client": "^4.5.11",
+    "@feathersjs/vuex": "^4.0.1-pre.7",
     "@tailwindcss/forms": "^0.2.1",
     "axios": "^0.21.1",
+    "feathers-hooks-common": "^5.0.5",
     "vue": "^3.0.5",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.0"

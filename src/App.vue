@@ -2,8 +2,19 @@
   <router-view />
 </template>
 
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
+<script>
+import { onMounted } from 'vue'
+import { useStore } from 'vuex'
+export default {
+  // setup() {
+  //   const store = useStore()
+  //   // const checkForLocalUser = () => store.dispatch('checkForLocalUser')
+  //   // onMounted(checkForLocalUser)
+  //   return {
+  //     checkForLocalUser,
+  //   }
+  // },
+}
 
 // This starter template is using Vue 3 experimental <script setup> SFCs
 // Check out https://github.com/vuejs/rfcs/blob/script-setup-2/active-rfcs/0000-script-setup.md

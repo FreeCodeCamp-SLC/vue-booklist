@@ -29,7 +29,7 @@
 
         <div class="mt-8">
           <div class="mt-6">
-            <form action="#" method="POST" class="space-y-6">
+            <form @submit.prevent="signIn" method="POST" class="space-y-6">
               <div>
                 <label
                   for="email"
@@ -43,6 +43,7 @@
                     name="email"
                     type="email"
                     autocomplete="email"
+                    v-model="email"
                     required
                     class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
@@ -61,6 +62,7 @@
                     id="password"
                     name="password"
                     type="password"
+                    v-model="pwd"
                     autocomplete="current-password"
                     required
                     class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -118,14 +120,21 @@
   </div>
 </template>
 
-<script setup>
+<script>
 import { defineProps, ref } from 'vue'
-
-defineProps({
-  msg: String,
-})
-
-const count = ref(0)
+import { useStore } from 'vuex'
+export default {
+  setup() {
+    const store = useStore()
+    const email = ref('')
+    const pwd = ref('')
+    return {
+      pwd,
+      email,
+      signIn: () => store.dispatch('getUserInfo', { email, pwd }),
+    }
+  },
+}
 </script>
 
 <style scoped>

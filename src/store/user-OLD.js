@@ -1,4 +1,5 @@
 import axios from 'axios'
+import router from '../router'
 
 export default {
   state: () => ({
@@ -8,7 +9,7 @@ export default {
   mutations: {
     ADD_USER_TO_STATE(state, payload) {
       localStorage.setItem('booklist-accessToken', payload.accessToken)
-      localStorage.setItem('booklist-user', payload.user)
+      localStorage.setItem('booklist-user', JSON.stringify(payload.user))
       state.userInfo = payload.user
       state.accessToken = payload.accessToken
     },
@@ -23,11 +24,19 @@ export default {
         })
         .then((response) => {
           context.commit('ADD_USER_TO_STATE', response.data)
-          context.commit
+          router.push('/')
         })
     },
     checkForLocalUser(context) {
-      if (context.state.accessToken && context.state.userInfo) {
+      console.log('CHECKING FOR LOCAL USER')
+      const localAccessToken = localStorage.getItem('booklist-accessToken')
+      const localUser = localStorage.getItem('booklist-user')
+      if (localUser && localAccessToken) {
+        context.commit('ADD_USER_TO_STATE', {
+          user: localUser,
+          accessToken: localAccessToken,
+        })
+        router.push('/')
       }
     },
   },

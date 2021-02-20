@@ -6,14 +6,14 @@
 import { onMounted } from 'vue'
 import { useStore } from 'vuex'
 export default {
-  // setup() {
-  //   const store = useStore()
-  //   // const checkForLocalUser = () => store.dispatch('checkForLocalUser')
-  //   // onMounted(checkForLocalUser)
-  //   return {
-  //     checkForLocalUser,
-  //   }
-  // },
+  setup() {
+    const store = useStore()
+    const checkForLocalUser = () => store.dispatch('checkForLocalUser')
+    onMounted(checkForLocalUser)
+    return {
+      checkForLocalUser,
+    }
+  },
 }
 
 // This starter template is using Vue 3 experimental <script setup> SFCs

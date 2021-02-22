@@ -24,7 +24,7 @@ export default {
         })
         .then((response) => {
           context.commit('ADD_USER_TO_STATE', response.data)
-          router.push('/')
+          router.push('/lists')
         })
     },
     checkForLocalUser(context) {
@@ -36,7 +36,8 @@ export default {
           user: localUser,
           accessToken: localAccessToken,
         })
-        router.push('/')
+      } else {
+        router.push('/signin')
       }
     },
   },

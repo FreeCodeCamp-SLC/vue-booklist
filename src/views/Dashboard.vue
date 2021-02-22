@@ -60,8 +60,8 @@
             </div>
             <nav class="px-2 mt-5 space-y-1">
               <!-- Current: "bg-indigo-800 text-white", Default: "text-white hover:bg-indigo-600 hover:bg-opacity-75" -->
-              <a
-                href="#"
+              <router-link
+                to="lists"
                 class="flex items-center px-2 py-2 text-base font-medium text-white bg-indigo-800 rounded-md group"
               >
                 <!-- Heroicon name: outline/collection -->
@@ -80,7 +80,7 @@
                   />
                 </svg>
                 Lists
-              </a>
+              </router-link>
 
               <a
                 href="#"
@@ -144,8 +144,8 @@
             </div>
             <nav class="flex-1 px-2 mt-5 space-y-1">
               <!-- Current: "bg-indigo-800 text-white", Default: "text-white hover:bg-indigo-600 hover:bg-opacity-75" -->
-              <a
-                href="#"
+              <router-link
+                to="lists"
                 class="flex items-center px-2 py-2 text-sm font-medium text-white bg-indigo-800 rounded-md group"
               >
                 <!-- Heroicon name: outline/collection -->
@@ -165,7 +165,7 @@
                   />
                 </svg>
                 Lists
-              </a>
+              </router-link>
 
               <a
                 href="#"
@@ -247,15 +247,9 @@
           <div class="px-4 mx-auto max-w-7xl sm:px-6 md:px-8">
             <h1 class="text-2xl font-semibold text-gray-900">Lists</h1>
           </div>
-          <div class="px-4 mx-auto max-w-7xl sm:px-6 md:px-8">
-            <!-- Replace with your content -->
-            <div class="py-4">
-              <div
-                class="border-4 border-gray-200 border-dashed rounded-lg h-96"
-              ></div>
-            </div>
-            <!-- /End replace -->
-          </div>
+          <router-view></router-view>
+
+          <!-- /End replace -->
         </div>
       </main>
     </div>
@@ -264,8 +258,11 @@
 
 <script>
 import { ref } from 'vue'
-
+// import HelloWorld from '../components/HelloWorld.vue'
 export default {
+  // components: {
+  //   HelloWorld,
+  // },
   setup() {
     // const store = useStore()
     const sidebarOpen = ref(false)

@@ -3,7 +3,7 @@
   <div class="flex h-screen overflow-hidden bg-gray-100">
     <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
     <div class="md:hidden">
-      <div class="fixed inset-0 z-40 flex">
+      <div class="fixed inset-0 z-40 flex" v-show="sidebarOpen">
         <!--
         Off-canvas menu overlay, show/hide based on off-canvas menu state.
 
@@ -32,6 +32,7 @@
         >
           <div class="absolute top-0 right-0 pt-2 -mr-12">
             <button
+              @click="closeSidebarMenu"
               class="flex items-center justify-center w-10 h-10 ml-1 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
             >
               <span class="sr-only">Close sidebar</span>
@@ -217,6 +218,7 @@
       <div class="pt-1 pl-1 md:hidden sm:pl-3 sm:pt-3">
         <button
           class="-ml-0.5 -mt-0.5 h-12 w-12 inline-flex items-center justify-center rounded-md text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+          @click="openSidebarMenu"
         >
           <span class="sr-only">Open sidebar</span>
           <!-- Heroicon name: outline/menu -->
@@ -260,14 +262,26 @@
   </div>
 </template>
 
-<script setup>
-import { defineProps, ref } from 'vue'
+<script>
+import { ref } from 'vue'
 
-defineProps({
-  msg: String,
-})
-
-const count = ref(0)
+export default {
+  setup() {
+    // const store = useStore()
+    const sidebarOpen = ref(false)
+    function openSidebarMenu() {
+      sidebarOpen.value = true
+    }
+    function closeSidebarMenu() {
+      sidebarOpen.value = false
+    }
+    return {
+      sidebarOpen,
+      openSidebarMenu,
+      closeSidebarMenu,
+    }
+  },
+}
 </script>
 
 <style scoped>

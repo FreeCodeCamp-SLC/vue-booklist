@@ -1,5 +1,9 @@
 <template>
-  <h1>{{ msg }}</h1>
+  <div id="nav">
+    <router-link to="/">Test</router-link>
+    <router-link to="/signin">Sign In</router-link>
+  </div>
+  <h1>TEST</h1>
 
   <p>
     <a href="https://vitejs.dev/guide/features.html" target="_blank"
@@ -17,13 +21,13 @@
 </template>
 
 <script setup>
-import { defineProps, ref } from 'vue';
+import { defineProps, ref } from 'vue'
 
 defineProps({
   msg: String,
-});
+})
 
-const count = ref(0);
+const count = ref(0)
 </script>
 
 <style scoped>
